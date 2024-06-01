@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <h1>Registro</h1>
+        <table>
+            {{ form_usuario.as_table }}
+        </table>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <button type="submit">Registrarse</button>
+    </form>
+</body>
+</html>

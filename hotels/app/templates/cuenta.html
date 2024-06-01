@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuenta</title>
+</head>
+<body>
+    <h1>Información de Cuenta</h1>
+    <div>Id Usuario: {{usuario.idusuario}}</div>
+    <div>Nombre: {{usuario.nombre}}</div>
+    <div>Apellido: {{usuario.apellido}}</div>
+    <div>Email: {{usuario.email}}</div>
+    <div>Username: {{usuario.username}}</div>
+    <div>Password: {{usuario.password}}</div>
+    <div>Telefono: {{usuario.telefono}}</div>
+
+    <a href="{% url 'index' %}">Inicio</a>
+</body>
+</html>

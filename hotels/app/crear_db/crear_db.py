@@ -119,7 +119,7 @@ def vaciar_tabla(nombre_tabla):
 
 #ver_columnas('app_pais')
 
-do_query('SELECT * FROM app_hotel_info;')
+do_query('SELECT * FROM app_usuario;')
 
 #vaciar_tabla('app_hotel_info')
 

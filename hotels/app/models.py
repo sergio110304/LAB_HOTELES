@@ -10,10 +10,16 @@ class Usuario(models.Model):
     password = models.CharField(max_length=100)
     telefono = models.CharField(max_length=15)
 
+    def __str__(self):
+        return f"Usuario {self.idusuario}: {self.nombre} {self.apellido} {self.telefono}"
+
 
 class Pais(models.Model):
     countrycode = models.CharField(primary_key=True)
     countryname = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"País {self.countrycode}: {self.countryname}"
 
 
 class Ciudad(models.Model):
@@ -21,20 +27,23 @@ class Ciudad(models.Model):
     citycode = models.CharField(primary_key=True)
     cityname = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f"Ciudad {self.citycode}: {self.cityname}"
+
 
 class Hotel_info(models.Model):
     idhotel = models.AutoField(primary_key=True)
     citycode = models.ForeignKey(Ciudad, on_delete=models.SET_NULL, null=True)
-    hotelcode = models.CharField(max_length=100)
-    hotelname = models.CharField(max_length=100)
-    hotelrating = models.CharField(max_length=100, null=True)
+    hotelcode = models.CharField(max_length=200)
+    hotelname = models.CharField(max_length=200)
+    hotelrating = models.CharField(max_length=200, null=True)
     address = models.TextField(null=True)
     attractions = models.TextField(null=True)
-    faxnumber = models.CharField(max_length=100, null=True)
+    faxnumber = models.CharField(max_length=200, null=True)
     hotelfacilities = models.TextField(null=True)
-    map = models.CharField(max_length=100, null=True)
-    phonenumber = models.CharField(max_length=100, null=True)
-    pincode = models.CharField(max_length=100, null=True)
+    map = models.CharField(max_length=200, null=True)
+    phonenumber = models.CharField(max_length=200, null=True)
+    pincode = models.CharField(max_length=200, null=True)
     hotelwebsiteurl = models.CharField(max_length=200, null=True)
 
 class Viaje(models.Model):
