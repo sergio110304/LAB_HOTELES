@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Iniciar sesión</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
-</head>
-<body>
-    <h2>Iniciar sesión</h2>
+{% extends "base.html" %}
+
+{% block head %}
+<title>Iniciar sesión</title>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+{% endblock %}
+{% block contenido %} 
+<h2>Iniciar sesión</h2>
     <form method="post">
         {% csrf_token %}
         <label for="username">Nombre de usuario:</label><br>
@@ -18,5 +18,4 @@
     {% if error %}
         <p style="color: red;">{{ error }}</p>
     {% endif %}
-</body>
-</html>
+{% endblock %}

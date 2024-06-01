@@ -1,46 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends "base.html" %}
+
+{% block head %} 
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>App_hotel</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
-</head>
-<body>
-    <h1>Bienvenido a la pagina de inicio de nuestra nueva app</h1>
-    <div>
-        <a href="registrar/">Registrarse</a>
-        <a href="login/">Iniciar sesion</a>
-    </div>
-    <div>
-        Numero de usuario: {{no_usuarios}}
-    </div>
-    <div>
-        <table>
-            <thead>
+{% endblock %}
+
+{% block contenido %} 
+<div>
+    Numero de usuario: {{no_usuarios}}
+</div>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Telfono</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
                 <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Email</th>
-                    <th>Username</th>
-                    <th>Telfono</th>
+                    <td>{{usuario.idusuario}}</td>
+                    <td>{{usuario.nombre}}</td>
+                    <td>{{usuario.apellido}}</td>
+                    <td>{{usuario.email}}</td>
+                    <td>{{usuario.username}}</td>
+                    <td>{{usuario.telefono}}</td>
                 </tr>
-            </thead>
-            <tbody>
-                {% for usuario in usuarios %}
-                    <tr>
-                        <td>{{usuario.idusuario}}</td>
-                        <td>{{usuario.nombre}}</td>
-                        <td>{{usuario.apellido}}</td>
-                        <td>{{usuario.email}}</td>
-                        <td>{{usuario.username}}</td>
-                        <td>{{usuario.telefono}}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</body>
-</html>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
