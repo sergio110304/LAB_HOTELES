@@ -22,24 +22,25 @@ class Ciudad(models.Model):
     cityname = models.CharField(max_length=50)
 
 
-class Hotel(models.Model):
+class Hotel_info(models.Model):
+    idhotel = models.AutoField(primary_key=True)
     citycode = models.ForeignKey(Ciudad, on_delete=models.SET_NULL, null=True)
-    hotelcode = models.CharField(primary_key=True)
-    hotelname = models.CharField(max_length=50)
-    hotelrating = models.CharField(max_length=50)
-    address = models.TextField()
-    attractions = models.TextField()
-    faxnumber = models.CharField(max_length=50)
-    hotelfacilities = models.TextField()
-    map = models.CharField(max_length=100)
-    phonenumber = models.CharField(max_length=100)
-    pincode = models.CharField(max_length=50)
-    hotelwebsiteurl = models.CharField(max_length=200)
+    hotelcode = models.CharField(max_length=100)
+    hotelname = models.CharField(max_length=100)
+    hotelrating = models.CharField(max_length=100, null=True)
+    address = models.TextField(null=True)
+    attractions = models.TextField(null=True)
+    faxnumber = models.CharField(max_length=100, null=True)
+    hotelfacilities = models.TextField(null=True)
+    map = models.CharField(max_length=100, null=True)
+    phonenumber = models.CharField(max_length=100, null=True)
+    pincode = models.CharField(max_length=100, null=True)
+    hotelwebsiteurl = models.CharField(max_length=200, null=True)
 
 class Viaje(models.Model):
     idviaje = models.CharField(primary_key=True)
     idusuario = models.ForeignKey(Usuario, on_delete=models.SET_NULL, null=True)
-    hotelcode = models.ForeignKey(Hotel, on_delete=models.SET_NULL, null=True)
+    hotelcode = models.ForeignKey(Hotel_info, on_delete=models.SET_NULL, null=True)
     fechainicio = models.DateField()
     fechafin = models.DateField()
     
