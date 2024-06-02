@@ -5,6 +5,11 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 {% endblock %}
+
+{% block main_classes %}
+    d-flex justify-content-center align-items-center min-vh-100
+{% endblock %}
+
 {% block contenido %} 
 <h2>Iniciar sesión</h2>
     <form method="post">
