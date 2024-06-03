@@ -1,8 +1,16 @@
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escribir reseña</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+{% endblock %}
+
 {% block contenido %}
-<h1>Escribir Reseña</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form_reseña.as_p }}
-    <button type="submit">Enviar Reseña</button>
-</form>
+    <h1>Escribir Reseña</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form_reseña.as_p }}
+        <button type="submit">Enviar Reseña</button>
+    </form>
 {% endblock %}
