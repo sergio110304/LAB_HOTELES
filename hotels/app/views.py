@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as django_login
 from django.http import HttpResponse
 from app.models import Usuario
@@ -25,6 +25,18 @@ def registrar(request):
         form_usuario = UsuarioForm()
 
     return render(request, 'registrar.html', {'form_usuario': form_usuario})
+
+def editar(request, idusuario):
+    usuario = get_object_or_404(Usuario, pk=idusuario)
+    if request.method == 'POST':
+        form_usuario = UsuarioForm(request.POST, instance=usuario)
+        if form_usuario.is_valid():
+            form_usuario.save()
+            return redirect('cuenta', idusuario=idusuario)
+    else:
+        form_usuario = UsuarioForm(instance=usuario)
+
+    return render(request, 'editar.html', {'form_usuario': form_usuario})
 
 
 def login(request):

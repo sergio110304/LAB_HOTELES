@@ -1,0 +1,97 @@
+:root {
+    --colorPrimario: #1565C0;
+    --colorSecundario: #B92B27;
+    --colorTexto: #14110F;
+    --colorFondoClaro: #F1FAEE;
+}
+
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif !important;
+    background: var(--colorFondoClaro);
+    color: var(--colorTexto);
+    width: 100%;
+    min-height: 100vh;
+}
+
+.container {
+    background: #b92b27;
+    background: -webkit-linear-gradient(to right, #1565C0, #b92b27);
+    background: linear-gradient(to right, #1565C0, #b92b27);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 50% ;
+    max-width: 600px !important;
+    text-align: center;
+}
+
+
+
+body h1 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+
+table {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    color: var(--colorTexto);
+}
+
+th {
+    background-color: var(--colorFondoClaro);
+    color: var(--colorTexto);
+}
+
+tr:nth-child(even) {
+    background-color: #fff;
+}
+tr:nth-child(odd) {
+    background-color: var(--colorFondoClaro);
+}
+
+tr:hover {
+    background-color: var(--colorFondoClaro);
+}
+
+a.button {
+    background: var(--colorFondoClaro);
+    color: var(--colorTexto);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+a.button:hover {
+    background: var(--colorPrimario);
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}

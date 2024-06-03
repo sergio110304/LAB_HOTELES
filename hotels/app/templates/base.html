@@ -17,9 +17,9 @@
         <header>
             <nav class="navbar navbar-expand navbar-light bg-light">
                 <div class="nav navbar-nav">
-                    <a class="nav-item nav-link active" href="index" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
-                    <a class="nav-item nav-link" href="login">Iniciar sesión</a>
-                    <a class="nav-item nav-link" href="registrar">Registrar</a>
+                    <a class="nav-item nav-link active" href="{% url 'index' %}" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
+                    <a class="nav-item nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+                    <a class="nav-item nav-link" href="{% url 'registrar' %}">Registrar</a>
                 </div>
             </nav>
         </header>
