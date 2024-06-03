@@ -1,5 +1,5 @@
 from django.forms import ModelForm, EmailInput
-from app.models import Usuario
+from app.models import Usuario, Vuelo, Reseña
 
 class UsuarioForm(ModelForm):
     class Meta:
@@ -8,3 +8,13 @@ class UsuarioForm(ModelForm):
         widgets = {
             'email': EmailInput(attrs={'type': 'email'})
         }
+
+class VueloForm(ModelForm):
+    class Meta:
+        model = Vuelo
+        fields = ['usuario', 'origen', 'destino', 'fecha_salida', 'fecha_regreso']
+
+class ReseñaForm(ModelForm):
+    class Meta:
+        model = Reseña
+        fields = ['usuario', 'hotel', 'texto', 'puntuacion']

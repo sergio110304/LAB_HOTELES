@@ -53,5 +53,24 @@ class Viaje(models.Model):
     fechainicio = models.DateField()
     fechafin = models.DateField()
     
+class Vuelo(models.Model):
+    idvuelo = models.AutoField(primary_key=True)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    origen = models.CharField(max_length=100)
+    destino = models.CharField(max_length=100)
+    fecha_salida = models.DateField()
+    fecha_regreso = models.DateField()
 
+    def __str__(self):
+        return f"Viaje {self.idvuelo} de {self.origen} a {self.destino}"
+
+class Reseña(models.Model):
+    idreseña = models.AutoField(primary_key=True)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    hotel = models.ForeignKey(Hotel_info, on_delete=models.CASCADE)
+    texto = models.TextField()
+    puntuacion = models.IntegerField()
+
+    def __str__(self):
+        return f"Reseña {self.idreseña} por {self.usuario} para {self.hotel}"
     

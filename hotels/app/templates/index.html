@@ -2,40 +2,27 @@
 
 {% block head %} 
 <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App_hotel</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>App_hotel</title>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+{% endblock %}
+
+{% block main_classes %}
+    d-flex justify-content-center align-items-center min-vh-100
 {% endblock %}
 
 {% block contenido %} 
-<div>
-    Numero de usuario: {{no_usuarios}}
-</div>
-<div>
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Email</th>
-                <th>Username</th>
-                <th>Telfono</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for usuario in usuarios %}
-                <tr>
-                    <td>{{usuario.idusuario}}</td>
-                    <td>{{usuario.nombre}}</td>
-                    <td>{{usuario.apellido}}</td>
-                    <td>{{usuario.email}}</td>
-                    <td>{{usuario.username}}</td>
-                    <td>{{usuario.telefono}}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="container">
+    <h1 class="main-title">TRAVELMATE</h1>
+
+    <form method="post" class="search-form mb-4">
+        {% csrf_token %}
+        <h2>Buscar Hoteles</h2>
+        <div class="input-group">
+            <input type="text" name="ciudad" class="form-control" placeholder="Ingrese la ciudad">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+    </form>
 </div>
 {% endblock %}
