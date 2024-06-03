@@ -20,9 +20,7 @@ body {
 }
 
 .container {
-    background: #b92b27;
-    background: -webkit-linear-gradient(to right, #1565C0, #b92b27);
-    background: linear-gradient(to right, #1565C0, #b92b27);
+    background: linear-gradient(to top, #556270, #4ECDC4);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
