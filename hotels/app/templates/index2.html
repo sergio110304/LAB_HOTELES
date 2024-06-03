@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 {% endblock %}
 
+
 {% block main_classes %}
     d-flex justify-content-center align-items-center min-vh-100
 {% endblock %}
@@ -18,7 +19,7 @@
         <h1>Bienvenido, {{ usuario.nombre }}</h1>
         <a href="{% url 'logout' %}" class="btn btn-danger">Cerrar Sesión</a>
     </header>
-
+    
     <div class="my-4">
         <form method="post" class="mb-4">
             {% csrf_token %}

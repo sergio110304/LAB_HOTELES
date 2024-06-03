@@ -1,8 +1,16 @@
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar viaje</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+{% endblock %}
+
 {% block contenido %}
-<h1>Agregar Viaje</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form_vuelo.as_p }}
-    <button type="submit">Agregar Vuelo</button>
-</form>
+    <h1>Agregar Viaje</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form_vuelo.as_p }}
+        <button type="submit">Agregar Vuelo</button>
+    </form>
 {% endblock %}
