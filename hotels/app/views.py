@@ -7,6 +7,10 @@ from app.forms import UsuarioForm, VueloForm, ReseñaForm
 
 # Create your views here.
 
+
+def homepage(request):
+    return render(request, 'homepage.html')
+
 def bienvenido(request):
     no_usuarios = Usuario.objects.count()
     usuarios = Usuario.objects.all()

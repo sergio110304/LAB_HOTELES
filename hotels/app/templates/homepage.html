@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'homepage.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="menu container">
+            <a href="#" class="logo">Logo</a>
+            <input type="checkbox" id="menu"/>
+            <label for="menu">
+                <img src="" class="menu-icono" alt="">
+            </label>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'login' %}">Iniciar sesion</a></li>
+                    <li><a href="{% url 'registrar' %}">Registrarse</a></li>
+                </ul>
+
+            </nav>
+        </div>
+
+        <div class="header-content container">
+            <h1>TRAVELMATE</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore natus autem praesentium molestiae! 
+                Quae amet nam aspernatur magnam? Ipsum tempora est suscipit voluptas! Corrupti optio ad sequi, mollitia 
+                possimus hic?
+            </p>
+            <a href="#" class="btn-1">info</a>
+        </div>
+    </header>
+
+    <section class="hotel">
+        <!-- <img src="../img/bg2.jpeg" alt=""> -->
+
+        <div class="hotel-content container">
+            <h2>Diversos hoteles en todo el mundo</h2>
+            <p class="txt-p">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa corporis 
+                impedit saepe praesentium nostrum voluptatibus sed! Nobis velit maxime 
+                nostrum consequuntur enim, impedit, provident dolore ut, exercitationem 
+                qui recusandae corrupti?
+            </p>
+
+            <div class="hotel-group">
+                <div class="hotel-1">
+                    <img src="{% static 'img/bg3.jpg' %}" alt=" ">
+                    <h3>Hoteles que brindan una gran experiencia</h2>
+                </div>
+                <div class="hotel-1">
+                    <div class="">
+                        <img src="{% static 'img/bg5.jpeg' %}" alt=" ">
+                        <h3>Con lujosos interiores</h2>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+
+    </section>
+
+    <main class="services">
+
+        <div class="services-content container">
+            <h2>Hoteleria servicios</h2>
+            <div class="services-group">
+
+                <div class="services-1">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="footer">
+
+        <div class="footer-content container">
+
+            <div class="link">
+
+                <h3>lorem</h3>
+                <ul>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">lorem</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
