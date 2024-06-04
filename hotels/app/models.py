@@ -46,6 +46,9 @@ class Hotel_info(models.Model):
     pincode = models.CharField(max_length=200, null=True)
     hotelwebsiteurl = models.CharField(max_length=200, null=True)
 
+    def __str__(self):
+        return f"Reseña {self.idhotel} {self.hotelname} "
+
 class Viaje(models.Model):
     idviaje = models.CharField(primary_key=True)
     idusuario = models.ForeignKey(Usuario, on_delete=models.SET_NULL, null=True)
@@ -62,7 +65,7 @@ class Vuelo(models.Model):
     fecha_regreso = models.DateField()
 
     def __str__(self):
-        return f"Viaje {self.idvuelo} de {self.origen} a {self.destino}"
+        return f"Viaje desde {self.origen} a {self.destino} de {self.fecha_salida} a {self.fecha_regreso}"
 
 class Reseña(models.Model):
     idreseña = models.AutoField(primary_key=True)
