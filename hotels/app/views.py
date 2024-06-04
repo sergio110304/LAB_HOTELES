@@ -15,27 +15,46 @@ def homepage(request):
 
 def catalogo(request):
     if request.method == 'POST':
-        ciudad_ = request.POST['ciudad']
-        pais_ = request.POST['pais']
-        rating_ = request.POST['rating']
-        hoteles = Hotel_info.objects.filter(hotelrating=rating_).values_list('hotelname', flat=True).distinct()
-        context = {"hotel": hoteles}
+        pais_ = request.POST.get('pais')
+        ciudad_ = request.POST.get('ciudad')
+        rating_ = request.POST.get('rating')
+
+        # Comienza con todos los hoteles
+        hoteles_filtrados = Hotel_info.objects.all()
+
+        # Filtra por país si se seleccionó uno
+        if pais_:
+            ciudades_en_pais = Ciudad.objects.filter(countrycode=pais_)
+            hoteles_filtrados = hoteles_filtrados.filter(citycode__in=ciudades_en_pais)
+
+        # Filtra por ciudad si se seleccionó una
+        if ciudad_:
+            hoteles_filtrados = hoteles_filtrados.filter(citycode=ciudad_)
+
+        # Filtra por rating si se seleccionó uno
+        if rating_:
+            hoteles_filtrados = hoteles_filtrados.filter(hotelrating=rating_)
+
+        context = {
+            "hoteles": hoteles_filtrados[:4],
+            "hotelesfila2": hoteles_filtrados[4:8],
+            "hotelesfila3": hoteles_filtrados[8:12],
+            "paises": Pais.objects.all(),
+            "ciudades": Ciudad.objects.all(),
+            "ratings": Hotel_info.objects.values_list('hotelrating', flat=True).distinct(),
+        }
         return render(request, 'catalogo.html', context)
     
-    paises = Pais.objects.all()
-    ciudades = Ciudad.objects.all()
-    ratings = Hotel_info.objects.values_list('hotelrating', flat=True).distinct()
-    hoteles = Hotel_info.objects.all()[:4]
-    hotelesfila2 = Hotel_info.objects.all()[4:8]
-    hotelesfila3 = Hotel_info.objects.all()[8:12]
-    context = {"hoteles": hoteles, 
-               "hotelesfila2": hotelesfila2, 
-               "hotelesfila3": hotelesfila3, 
-               "paises": paises, 
-               "ciudades": ciudades,
-               "ratings": ratings}
+    # Si no es un POST, muestra todos los hoteles
+    context = {
+        "hoteles": Hotel_info.objects.all()[:4],
+        "hotelesfila2": Hotel_info.objects.all()[4:8],
+        "hotelesfila3": Hotel_info.objects.all()[8:12],
+        "paises": Pais.objects.all(),
+        "ciudades": Ciudad.objects.all(),
+        "ratings": Hotel_info.objects.values_list('hotelrating', flat=True).distinct(),
+    }
     return render(request, 'catalogo.html', context)
-
 
 def bienvenido(request):
     no_usuarios = Usuario.objects.count()

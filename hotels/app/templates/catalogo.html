@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
-
-{% block head %} 
+{% block head %}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catalogo</title>
@@ -10,67 +9,69 @@
 {% endblock %}
 
 {% block contenido %}
-<h1>Catalogo de hoteles</h1>
-    <h2>Filtrar hoteles</h2>
-    <form method="POST">
-        <label for="pais">País:</label>
-        <select id="pais" name="pais">
-            {% for pais in paises %}
-            <option value="{{ pais.countryname }}">{{ pais.countryname }}</option>
-            {% endfor %}
-        </select>
-    
-        <label for="ciudad">Ciudad:</label>
-        <select id="ciudad" name="ciudad">
-            {% for ciudad in ciudades %}
-            <option value="{{ ciudad.citycode }}">{{ ciudad.cityname }}</option>
-            {% endfor %}
-        </select>
+<h1>Catálogo de hoteles</h1>
+<h2>Filtrar hoteles</h2>
+<form method="POST">
+    {% csrf_token %}
+    <label for="pais">País:</label>
+    <select id="pais" name="pais">
+        <option value="">Todos</option>
+        {% for pais in paises %}
+        <option value="{{ pais.countrycode }}">{{ pais.countryname }}</option>
+        {% endfor %}
+    </select>
 
-        <label for="rating">Puntuacion:</label>
-        <select id="rating" name="citycode">
-            {% for rating in ratings %}
-            <option value="{{ rating }}">{{ rating }}</option>
-            {% endfor %}
-        </select>
-        {% csrf_token %}
-        <button type="submit" value="Buscar">Buscar</button>
-    
-    </form>
+    <label for="ciudad">Ciudad:</label>
+    <select id="ciudad" name="ciudad">
+        <option value="">Todas</option>
+        {% for ciudad in ciudades %}
+        <option value="{{ ciudad.citycode }}">{{ ciudad.cityname }}</option>
+        {% endfor %}
+    </select>
 
-    <section class="contenido">
-        <div class="mostrador" id="mostrador">
-            <div class="fila">
-                {% for hotel in hoteles %}
-                <a href="{% url 'detalleshotel' hotel.idhotel %}" class="item">
-                    <div class="contenedor">
-                        <img src="{% static 'img/hotel-icon-1.jpg' %}" alt="">
-                        <p class="descripcion">{{ hotel.hotelname }}</p>
-                    </div>
-                </a>
-                {% endfor %} 
-            </div>
-            <div class="fila">
-                {% for hotel in hotelesfila2 %}
-                <a href="{% url 'detalleshotel' hotel.idhotel %}" class="item">
-                    <div class="contenedor">
-                        <img src="{% static 'img/hotel-icon-1.jpg' %}" alt="">
-                        <p class="descripcion">{{ hotel.hotelname }}</p>
-                    </div>
-                </a>
-                {% endfor %} 
-            </div>
-            <div class="fila">
-                {% for hotel in hotelesfila3 %}
-                <a  href="{% url 'detalleshotel' hotel.idhotel %}" class="item">
-                    <div class="contenedor">
-                        <img src="{% static 'img/hotel-icon-1.jpg' %}" alt="">
-                        <p class="descripcion">{{ hotel.hotelname }}</p>
-                    </div>
-                </a>
-                {% endfor %} 
-            </div>
+    <label for="rating">Puntuación:</label>
+    <select id="rating" name="rating">
+        <option value="">Todas</option>
+        {% for rating in ratings %}
+        <option value="{{ rating }}">{{ rating }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit" value="Buscar">Buscar</button>
+</form>
+
+<section class="contenido">
+    <div class="mostrador" id="mostrador">
+        <div class="fila">
+            {% for hotel in hoteles %}
+            <a href="{% url 'detalleshotel' hotel.idhotel %}" class="item">
+                <div class="contenedor">
+                    <img src="{% static 'img/hotel-icon-1.jpg' %}" alt="">
+                    <p class="descripcion">{{ hotel.hotelname|safe }}</p>
+                </div>
+            </a>
+            {% endfor %}
         </div>
-    </section>
-
+        <div class="fila">
+            {% for hotel in hotelesfila2 %}
+            <a href="{% url 'detalleshotel' hotel.idhotel %}" class="item">
+                <div class="contenedor">
+                    <img src="{% static 'img/hotel-icon-1.jpg' %}" alt="">
+                    <p class="descripcion">{{ hotel.hotelname|safe }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        <div class="fila">
+            {% for hotel in hotelesfila3 %}
+            <a href="{% url 'detalleshotel' hotel.idhotel %}" class="item">
+                <div class="contenedor">
+                    <img src="{% static 'img/hotel-icon-1.jpg' %}" alt="">
+                    <p class="descripcion">{{ hotel.hotelname|safe }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 {% endblock %}
