@@ -1,5 +1,5 @@
 from django.urls import path
-from app.views import bienvenido, registrar, login, cuenta, editar, user_log, logout, agregar_vuelo, escribir_reseña, homepage
+from app.views import bienvenido, registrar, login, cuenta, editar, user_log, logout, agregar_vuelo, escribir_reseña, homepage, catalogo
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -15,7 +15,8 @@ urlpatterns = [
     path('logout/', logout, name='logout'),
     path('agregar_vuelo', agregar_vuelo, name='agregar_vuelo'),
     path('escribir_reseña', escribir_reseña, name='escribir_reseña'),
+    path('catalogo', catalogo, name='catalogo'),
 ]
 
-# if settings.DEBUG:
-#     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)

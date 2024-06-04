@@ -2,14 +2,23 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib.auth import logout as auth_logout
 from django.http import HttpResponse
-from app.models import Usuario, Vuelo, Reseña
+from app.models import Usuario, Vuelo, Reseña, Hotel_info
 from app.forms import UsuarioForm, VueloForm, ReseñaForm
 
 # Create your views here.
 
 
 def homepage(request):
-    return render(request, 'homepage.html')
+    hoteles = Hotel_info.objects.distinct().filter(citycode='110718', hotelrating='All').values_list('hotelname', flat=True)[:3]
+    context = {"hotel": hoteles}
+    return render(request, 'homepage.html', context)
+
+def catalogo(request):
+    hoteles = Hotel_info.objects.all()[:3]
+    context = {"hoteles": hoteles}
+    return render(request, 'catalogo.html', context)
+
+
 
 def bienvenido(request):
     no_usuarios = Usuario.objects.count()
