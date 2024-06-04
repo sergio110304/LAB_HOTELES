@@ -119,14 +119,37 @@ def logout(request):
     return redirect('homepage')
 
 def agregar_vuelo(request):
-    if request.method == 'POST':
-        form_vuelo = VueloForm(request.POST)
-        if form_vuelo.is_valid():
-            form_vuelo.save()
-            return redirect('index')
+    if request.method == "POST":
+        form = VueloForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('agregar_vuelo')  # Redirigir a la misma página para mostrar la lista actualizada
     else:
-        form_vuelo = VueloForm()
-    return render(request, 'agregar_vuelo.html', {'form_vuelo': form_vuelo})
+        form = VueloForm()
+
+    vuelos = Vuelo.objects.all()  # Obtener todos los vuelos
+
+    return render(request, 'agregar_vuelo.html', {'form_vuelo': form, 'vuelos': vuelos})
+
+def editar_vuelo(request, idvuelo):
+    vuelo = get_object_or_404(Vuelo, idvuelo=idvuelo)
+    if request.method == "POST":
+        form = VueloForm(request.POST, instance=vuelo)
+        if form.is_valid():
+            form.save()
+            return redirect('agregar_vuelo')
+    else:
+        form = VueloForm(instance=vuelo)
+    
+    return render(request, 'editar_vuelo.html', {'form_vuelo': form, 'vuelo': vuelo})
+
+def eliminar_vuelo(request, idvuelo):
+    vuelo = get_object_or_404(Vuelo, idvuelo=idvuelo)
+    if request.method == "POST":
+        vuelo.delete()
+        return redirect('agregar_vuelo')
+    
+    return render(request, 'eliminar_vuelo.html', {'vuelo': vuelo})
 
 def escribir_reseña(request):
     if request.method == 'POST':

@@ -1,0 +1,24 @@
+<!-- templates/eliminar_vuelo.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar viaje</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    {% endblock %}
+</head>
+<body>
+    {% block contenido %}
+    <h1>Eliminar Viaje</h1>
+    <p>¿Estás seguro de que deseas eliminar el vuelo de {{ vuelo.origen }} a {{ vuelo.destino }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Eliminar</button>
+        <a href="{% url 'agregar_vuelo' %}">Cancelar</a>
+    </form>
+    {% endblock %}
+</body>
+</html>

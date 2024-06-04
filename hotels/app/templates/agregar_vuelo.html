@@ -1,16 +1,50 @@
-{% block head %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% block head %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Agregar viaje</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
-{% endblock %}
-
-{% block contenido %}
+    <style>
+        h1, h2, button {
+            color: #ffffff; 
+            background-color: #007bff; 
+            padding: 10px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3; 
+            cursor: pointer;
+        }
+    </style>
+    {% endblock %}
+</head>
+<body>
+    {% block contenido %}
     <h1>Agregar Viaje</h1>
     <form method="post">
         {% csrf_token %}
         {{ form_vuelo.as_p }}
-        <button type="submit">Agregar Vuelo</button>
+        <button type="submit">Agregar Viaje</button>
     </form>
-{% endblock %}
+
+    <h2>Viajes Agregados</h2>
+    <ul>
+        {% for vuelo in vuelos %}
+            <li>
+                {{ vuelo }}
+                <a href="{% url 'editar_vuelo' vuelo.idvuelo %}">Editar</a>
+                <a href="{% url 'eliminar_vuelo' vuelo.idvuelo %}">Eliminar</a>
+            </li>
+        {% empty %}
+            <li>No hay vuelos agregados aún.</li>
+        {% endfor %}
+    </ul>    
+    <button type="button" onclick="window.history.back();">Atrás</button>
+    {% endblock %}
+    
+</body>
+</html>
