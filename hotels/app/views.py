@@ -116,7 +116,7 @@ def cuenta(request, idusuario):
 
 def logout(request):
     auth_logout(request)
-    return redirect('index')
+    return redirect('homepage')
 
 def agregar_vuelo(request):
     if request.method == 'POST':

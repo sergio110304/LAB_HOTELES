@@ -19,8 +19,8 @@
             <nav class="navbar">
                 <ul>
                     <li><a href="">Home</a></li>
-                    <li><a href="{% url 'login' %}">Iniciar sesion</a></li>
                     <li><a href="{% url 'registrar' %}">Registrarse</a></li>
+                    <li><a href="{% url 'login' %}">Iniciar sesion</a></li>
                     <li><a href="{% url 'catalogo' %}">Catalogo</a></li>
                 </ul>
 
@@ -33,7 +33,7 @@
                 Bienvenido a Travelmate en esta pagina encontraras un gran catalogo
                 de hoteles de todo el mundo para descubrir y planear viajes.
             </p>
-            <a href="#" class="btn-1">info</a>
+            <a href="{% url 'catalogo' %}"class="btn-1">Ir a catalogo</a
         </div>
     </header>
 
