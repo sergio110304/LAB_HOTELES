@@ -1,56 +1,70 @@
-{% extends "base.html" %}
-
-{% block head %}
-<meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuenta</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'stylecuenta.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800;900&family=Trocchi&display=swap" rel="stylesheet">
-{% endblock %}
-
-{% block main_classes %}
-    d-flex justify-content-center align-items-center min-vh-100
-{% endblock %}
-
-{% block contenido %}
-<div class="container">
-    <h1>Información de Cuenta</h1>
-    <table>
-        <tr>
-            <th>Campo</th>
-            <th>Información</th>
-        </tr>
-        <tr>
-            <td>Id Usuario:</td>
-            <td>{{usuario.idusuario}}</td>
-        </tr>
-        <tr>
-            <td>Nombre:</td>
-            <td>{{usuario.nombre}}</td>
-        </tr>
-        <tr>
-            <td>Apellido:</td>
-            <td>{{usuario.apellido}}</td>
-        </tr>
-        <tr>
-            <td>Email:</td>
-            <td>{{usuario.email}}</td>
-        </tr>
-        <tr>
-            <td>Username:</td>
-            <td>{{usuario.username}}</td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td>{{usuario.password}}</td>
-        </tr>
-        <tr>
-            <td>Teléfono:</td>
-            <td>{{usuario.telefono}}</td>
-        </tr>
-    </table>
     
-    <a href="{% url 'editar' usuario.idusuario %}" class="button">Editar</a>
-</div>
-{% endblock %}
+    <title>Ver cuenta</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <style>
+        h1, h2, button {
+            color: #ffffff; 
+            background-color: #007bff; 
+            padding: 10px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3; 
+            cursor: pointer;
+        }
+    </style>
+    {% endblock %}
+</head>
+<body>
+    {% block contenido %}
+    <div class="container">
+        <h1>Información de Cuenta</h1>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Información</th>
+            </tr>
+            <tr>
+                <td>Id Usuario:</td>
+                <td>{{usuario.idusuario}}</td>
+            </tr>
+            <tr>
+                <td>Nombre:</td>
+                <td>{{usuario.nombre}}</td>
+            </tr>
+            <tr>
+                <td>Apellido:</td>
+                <td>{{usuario.apellido}}</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>{{usuario.email}}</td>
+            </tr>
+            <tr>
+                <td>Username:</td>
+                <td>{{usuario.username}}</td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td>{{usuario.password}}</td>
+            </tr>
+            <tr>
+                <td>Teléfono:</td>
+                <td>{{usuario.telefono}}</td>
+            </tr>
+        </table>
+        
+        <a href="{% url 'editar' usuario.idusuario %}" class="button">Editar información</a>
+        
+    </div>
+    {% endblock %}
+    <a href="{% url 'user_log' usuario.idusuario %}" class="button">Atrás</a>
+</body>
+</html>
