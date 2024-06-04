@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib.auth import logout as auth_logout
 from django.http import HttpResponse
-from app.models import Usuario, Vuelo, Reseña, Hotel_info
+from app.models import Usuario, Vuelo, Reseña, Hotel_info, Ciudad, Pais
 from app.forms import UsuarioForm, VueloForm, ReseñaForm
 
 # Create your views here.
@@ -14,10 +14,27 @@ def homepage(request):
     return render(request, 'homepage.html', context)
 
 def catalogo(request):
-    hoteles = Hotel_info.objects.all()[:3]
-    context = {"hoteles": hoteles}
+    if request.method == 'POST':
+        ciudad_ = request.POST['ciudad']
+        pais_ = request.POST['pais']
+        rating_ = request.POST['rating']
+        hoteles = Hotel_info.objects.filter(hotelrating=rating_).values_list('hotelname', flat=True).distinct()
+        context = {"hotel": hoteles}
+        return render(request, 'catalogo.html', context)
+    
+    paises = Pais.objects.all()
+    ciudades = Ciudad.objects.all()
+    ratings = Hotel_info.objects.values_list('hotelrating', flat=True).distinct()
+    hoteles = Hotel_info.objects.all()[:4]
+    hotelesfila2 = Hotel_info.objects.all()[4:8]
+    hotelesfila3 = Hotel_info.objects.all()[8:12]
+    context = {"hoteles": hoteles, 
+               "hotelesfila2": hotelesfila2, 
+               "hotelesfila3": hotelesfila3, 
+               "paises": paises, 
+               "ciudades": ciudades,
+               "ratings": ratings}
     return render(request, 'catalogo.html', context)
-
 
 
 def bienvenido(request):
@@ -101,3 +118,7 @@ def escribir_reseña(request):
     else:
         form_reseña = ReseñaForm()
     return render(request, 'escribir_reseña.html', {'form_reseña': form_reseña})
+
+def detalleshotel(request, idhotel):
+    hotel = get_object_or_404(Hotel_info, pk=idhotel)
+    return render(request, 'detalleshotel.html', {'hotel': hotel})

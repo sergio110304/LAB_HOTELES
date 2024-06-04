@@ -1,5 +1,5 @@
-from django.forms import ModelForm, EmailInput
-from app.models import Usuario, Vuelo, Reseña
+from django.forms import ModelForm, EmailInput, forms
+from app.models import Usuario, Vuelo, Reseña, Hotel_info, Ciudad, Pais
 
 class UsuarioForm(ModelForm):
     class Meta:

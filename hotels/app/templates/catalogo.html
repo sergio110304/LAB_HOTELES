@@ -4,16 +4,73 @@
 {% block head %} 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>App_hotel</title>
+<title>Catalogo</title>
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'stylecuenta.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'catalogo.css' %}">
 {% endblock %}
 
 {% block contenido %}
-<h1>hoteles</h1>
-{% for hotel in hoteles %}
+<h1>Catalogo de hoteles</h1>
+    <h2>Filtrar hoteles</h2>
+    <form method="POST">
+        <label for="pais">País:</label>
+        <select id="pais" name="pais">
+            {% for pais in paises %}
+            <option value="{{ pais.countryname }}">{{ pais.countryname }}</option>
+            {% endfor %}
+        </select>
+    
+        <label for="ciudad">Ciudad:</label>
+        <select id="ciudad" name="ciudad">
+            {% for ciudad in ciudades %}
+            <option value="{{ ciudad.citycode }}">{{ ciudad.cityname }}</option>
+            {% endfor %}
+        </select>
 
-- {{ hotel.hotelname }} ; {{ hotel.hotelrating}} ;  <br>
+        <label for="rating">Puntuacion:</label>
+        <select id="rating" name="citycode">
+            {% for rating in ratings %}
+            <option value="{{ rating }}">{{ rating }}</option>
+            {% endfor %}
+        </select>
+        {% csrf_token %}
+        <button type="submit" value="Buscar">Buscar</button>
+    
+    </form>
 
-{% endfor %}
+    <section class="contenido">
+        <div class="mostrador" id="mostrador">
+            <div class="fila">
+                {% for hotel in hoteles %}
+                <a href="{% url 'detalleshotel' hotel.idhotel %}" class="item">
+                    <div class="contenedor">
+                        <img src="{% static 'img/hotel-icon-1.jpg' %}" alt="">
+                        <p class="descripcion">{{ hotel.hotelname }}</p>
+                    </div>
+                </a>
+                {% endfor %} 
+            </div>
+            <div class="fila">
+                {% for hotel in hotelesfila2 %}
+                <a href="{% url 'detalleshotel' hotel.idhotel %}" class="item">
+                    <div class="contenedor">
+                        <img src="{% static 'img/hotel-icon-1.jpg' %}" alt="">
+                        <p class="descripcion">{{ hotel.hotelname }}</p>
+                    </div>
+                </a>
+                {% endfor %} 
+            </div>
+            <div class="fila">
+                {% for hotel in hotelesfila3 %}
+                <a  href="{% url 'detalleshotel' hotel.idhotel %}" class="item">
+                    <div class="contenedor">
+                        <img src="{% static 'img/hotel-icon-1.jpg' %}" alt="">
+                        <p class="descripcion">{{ hotel.hotelname }}</p>
+                    </div>
+                </a>
+                {% endfor %} 
+            </div>
+        </div>
+    </section>
+
 {% endblock %}
