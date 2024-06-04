@@ -1,55 +1,86 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'homepage.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="menu container">
+            <a href="#" class="logo">TravelMate</a>
+            <input type="checkbox" id="menu"/>
+            <label for="menu">
+                <img src="" class="menu-icono" alt="">
+            </label>
+            
+            <nav class="navbar">
+                <form method="post">
+                    {% csrf_token %}  
+                    <button type="submit" name="ver_cuenta" class="btn btn-danger">Mi Cuenta</button>
+                </form>
+                <ul>
+                    <li><a href="{% url 'logout' %}" class="btn btn-danger">Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
 
-{% block head %}
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>App_hotel</title>
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
-{% endblock %}
-
-
-{% block main_classes %}
-    d-flex justify-content-center align-items-center min-vh-100
-{% endblock %}
-
-{% block contenido %}
-<div class="container">
-    <header class="d-flex justify-content-between align-items-center py-3">
-        <h1>Bienvenido, {{ usuario.nombre }}</h1>
-        <a href="{% url 'logout' %}" class="btn btn-danger">Cerrar Sesión</a>
+        <div class="header-content container">
+            <h1>Bienvenido</h1>
+            <p>
+                En esta pagina encontrarás un gran catalogo
+                de hoteles de todo el mundo para descubrir y planear viajes.
+            </p>
+            <a href="{% url 'catalogo' %}"class="btn-1">Ir a catalogo</a>
+            <a href="{% url 'agregar_vuelo' %}" class="btn-1">Agregar Viaje</a>
+            <a href="{% url 'escribir_reseña' %}" class="btn-1">Escribir Reseña</a>
+            
+        </div>
+        
     </header>
-    
-    <div class="my-4">
-        <form method="post" class="mb-4">
-            {% csrf_token %}
-            <h2>Buscar Hoteles</h2>
-            <div class="input-group">
-                <input type="text" name="ciudad" class="form-control" placeholder="Ingrese la ciudad">
-                <button type="submit" class="btn btn-primary">Buscar</button>
+
+    <section class="hotel">
+        <!-- <img src="../img/bg2.jpeg" alt=""> -->
+
+        <div class="hotel-content container">
+            <h2>Diversos hoteles en todo el mundo</h2>
+            <p class="txt-p">
+                Contamos con varios hoteles situados alrededor del mundo en nuestra base de datos.
+            </p>
+
+            <div class="hotel-group">
+                <div class="hotel-1">
+                    <img src="{% static 'img/bg3.jpg' %}" alt=" ">
+                    <h3>Hoteles que brindan una gran experiencia</h2>
+                </div>
+                <div class="hotel-1">
+                    <div class="">
+                        <img src="{% static 'img/bg5.jpeg' %}" alt=" ">
+                        <h3>Con lujosos interiores</h2>
+                    </div>
+                </div>
             </div>
-        </form>
+            
 
-        {% if hoteles %}
-            <h3>Resultados de búsqueda:</h3>
-            <ul class="list-group">
-                {% for hotel in hoteles %}
-                    <li class="list-group-item">{{ hotel.hotelname }} - {{ hotel.citycode.cityname }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
+        </div>
 
-    <div class="mt-4">
-        <form method="post">
-            {% csrf_token %}
-            <div class="d-flex justify-content-between w-100">
-                <a href="{% url 'agregar_vuelo' %}" class="btn btn-secondary flex-fill mx-2">Agregar Viaje</a>
-                <a href="{% url 'escribir_reseña' %}" class="btn btn-secondary flex-fill mx-2">Escribir Reseña</a>
-                <button type="submit" name="ver_cuenta" class="btn btn-primary flex-fill mx-2">Ver Información de Cuenta</button>
+    </section>
+
+    <footer class="footer">
+
+        <div class="footer-content container">
+
+            <div class="link">
+
+                <h3>DATABASE</h3>
+                <img src="{% static 'img/Logo-Uninorte.png' %}" alt="">
             </div>
-        </form>
-    </div>
-</div>
-{% endblock %}
 
+        </div>
+
+    </footer>
+
+</body>
+</html>
