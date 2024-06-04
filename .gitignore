@@ -2,3 +2,5 @@ hotels/app/crear_db/tablacities1.csv
 hotels/app/crear_db/tablacountry1.csv
 hotels/app/crear_db/hotelestabla1.csv
 myvenv/
+*.pyc
+__pycache__/
