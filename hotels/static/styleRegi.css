@@ -10,11 +10,8 @@
 
 body {
     font-family: "Poppins", sans-serif !important;
-    background: #b92b27;  
-    background: -webkit-linear-gradient(to right, #1565C0, #b92b27);  
-    background: linear-gradient(to right, #1565C0, #b92b27); 
+    background: linear-gradient(to top, #556270, #4ECDC4);
     width: 100%;
-    height: 650px;
 }
 
 body h1 {
@@ -62,7 +59,7 @@ input:focus~label, input:valid~label {
     position: absolute;
     top: -14px;
     font-size: 12px;
-    color: #1565C0;
+    color: #556270;
 }
 
 label{
@@ -91,15 +88,13 @@ input:focus~.barra::before {
     width: 0;
     bottom: 0;
     position: absolute;
-    background: linear-gradient(to right, #1565C0, #b92b27); 
+    background: linear-gradient(to top, #556270, #4ECDC4);
     transition: 0.3s ease all;
     left: 0%;
 }
 
 body button {
-    background: #b92b27;  
-    background: -webkit-linear-gradient(to right, #1565C0, #b92b27);  
-    background: linear-gradient(to right, #1565C0, #b92b27); 
+    background: linear-gradient(to top, #556270, #4ECDC4);
     display: block;
     width: 100px;
     height: 40px;

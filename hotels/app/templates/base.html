@@ -14,15 +14,15 @@
     </head>
 
     <body>
-        <header>
-            <nav class="navbar navbar-expand navbar-light bg-light">
-                <div class="nav navbar-nav">
-                    <a class="nav-item nav-link active" href="{% url 'homepage' %}" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
-                    <a class="nav-item nav-link" href="{% url 'login' %}">Iniciar sesión</a>
-                    <a class="nav-item nav-link" href="{% url 'registrar' %}">Registrar</a>
-                </div>
-            </nav>
-        </header>
+    <header>
+        <nav class="navbar navbar-expand navbar-light bg-light">
+            <div class="nav navbar-nav ms-auto">
+                <a class="nav-item nav-link active" href="{% url 'homepage' %}" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
+                <a class="nav-item nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+                <a class="nav-item nav-link" href="{% url 'registrar' %}">Registrarse</a>
+            </div>
+        </nav>
+    </header>
         <main class="{% block main_classes %} {% endblock %}">
             <div class="content-container w-100">
                 {% block contenido %} {% endblock %}
