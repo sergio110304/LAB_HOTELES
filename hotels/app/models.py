@@ -47,7 +47,7 @@ class Hotel_info(models.Model):
     hotelwebsiteurl = models.CharField(max_length=200, null=True)
 
     def __str__(self):
-        return f"Reseña {self.idhotel} {self.hotelname} "
+        return f"{self.idhotel} {self.hotelname} "
 
 class Viaje(models.Model):
     idviaje = models.CharField(primary_key=True)
@@ -70,7 +70,7 @@ class Vuelo(models.Model):
 class Reseña(models.Model):
     idreseña = models.AutoField(primary_key=True)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    hotel = models.ForeignKey(Hotel_info, on_delete=models.CASCADE)
+    hotel = models.TextField()
     texto = models.TextField()
     puntuacion = models.IntegerField()
 

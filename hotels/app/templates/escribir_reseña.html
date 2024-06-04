@@ -1,16 +1,38 @@
-{% block head %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% block head %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escribir reseña</title>
+    
+    <title>Agregar viaje</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
-{% endblock %}
-
-{% block contenido %}
+    <style>
+        h1, h2, button {
+            color: #ffffff; 
+            background-color: #007bff; 
+            padding: 10px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3; 
+            cursor: pointer;
+        }
+    </style>
+    {% endblock %}
+    
+</head>
+<body>
+    {% block contenido %}
     <h1>Escribir Reseña</h1>
     <form method="post">
         {% csrf_token %}
         {{ form_reseña.as_p }}
         <button type="submit">Enviar Reseña</button>
     </form>
-{% endblock %}
+  
+    <button type="button" onclick="window.history.back();">Atrás</button>
+    {% endblock %}
+</body>
+</html>

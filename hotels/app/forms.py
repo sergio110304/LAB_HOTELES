@@ -1,4 +1,4 @@
-from django.forms import ModelForm, EmailInput, forms
+from django.forms import ModelForm, EmailInput
 from app.models import Usuario, Vuelo, Reseña, Hotel_info, Ciudad, Pais
 
 class UsuarioForm(ModelForm):

@@ -156,11 +156,14 @@ def escribir_reseña(request):
         form_reseña = ReseñaForm(request.POST)
         if form_reseña.is_valid():
             form_reseña.save()
-            return redirect('index')
+            return redirect('escribir_reseña')
     else:
         form_reseña = ReseñaForm()
-    return render(request, 'escribir_reseña.html', {'form_reseña': form_reseña})
 
+    reseñas = Reseña.objects.all()
+
+    return render(request, 'escribir_reseña.html', {'form_reseña': form_reseña, 'reseñas': reseñas})
+    
 def detalleshotel(request, idhotel):
     hotel = get_object_or_404(Hotel_info, pk=idhotel)
     return render(request, 'detalleshotel.html', {'hotel': hotel})
