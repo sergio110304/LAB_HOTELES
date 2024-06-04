@@ -31,7 +31,21 @@
         {{ form_reseña.as_p }}
         <button type="submit">Enviar Reseña</button>
     </form>
-  
+    
+    <h2>Reseñas agregadas</h2>
+    <ul>
+        {% for reseña in reseña %}
+            <li>
+                <strong>Usuario:</strong> {{ reseña.usuario }} <br>
+                <strong>Hotel:</strong> {{ reseña.hotel }} <br>
+                <strong>Texto:</strong> {{ reseña.texto }} <br>
+                <strong>Puntuación:</strong> {{ reseña.puntuacion }}
+            </li>
+        {% empty %}
+            <li>No hay reseñas agregadas aún.</li>
+        {% endfor %}
+    </ul>
+
     <button type="button" onclick="window.history.back();">Atrás</button>
     {% endblock %}
 </body>
