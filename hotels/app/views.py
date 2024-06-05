@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib.auth import logout as auth_logout
-from django.http import HttpResponse
 from django.http import JsonResponse
+from django.http import HttpResponse
 from app.models import Usuario, Vuelo, Reseña, Hotel_info, Ciudad, Pais
 from app.forms import UsuarioForm, VueloForm, ReseñaForm
 
@@ -56,6 +56,11 @@ def catalogo(request):
         "ratings": Hotel_info.objects.values_list('hotelrating', flat=True).distinct(),
     }
     return render(request, 'catalogo.html', context)
+
+def get_ciudades(request):
+    countrycode = request.GET.get('countrycode')
+    ciudades = Ciudad.objects.filter(countrycode=countrycode).values('citycode', 'cityname')
+    return JsonResponse(list(ciudades), safe=False)
 
 def bienvenido(request):
     no_usuarios = Usuario.objects.count()
@@ -168,8 +173,3 @@ def escribir_reseña(request):
 def detalleshotel(request, idhotel):
     hotel = get_object_or_404(Hotel_info, pk=idhotel)
     return render(request, 'detalleshotel.html', {'hotel': hotel})
-
-def get_ciudades(request):
-    countrycode = request.GET.get('countrycode')
-    ciudades = Ciudad.objects.filter(countrycode=countrycode).values('citycode', 'cityname')
-    return JsonResponse(list(ciudades), safe=False)
