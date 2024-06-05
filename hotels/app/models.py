@@ -11,7 +11,7 @@ class Usuario(models.Model):
     telefono = models.CharField(max_length=15)
 
     def __str__(self):
-        return f"Usuario {self.idusuario}: {self.nombre} {self.apellido} {self.telefono}"
+        return f"Usuario {self.idusuario}: {self.nombre} {self.apellido}"
 
 
 class Pais(models.Model):
@@ -70,10 +70,10 @@ class Vuelo(models.Model):
 class Reseña(models.Model):
     idreseña = models.AutoField(primary_key=True)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    hotel = models.TextField()
-    texto = models.TextField()
+    hotel = models.CharField(max_length=100)
+    texto = models.CharField(max_length=10000)
     puntuacion = models.IntegerField()
 
     def __str__(self):
-        return f"Reseña {self.idreseña} por {self.usuario} para {self.hotel}"
+        return f"Usuario {self.usuario} para {self.hotel} dice {self.texto}"
     

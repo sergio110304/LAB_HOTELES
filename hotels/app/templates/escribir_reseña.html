@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Agregar viaje</title>
+    <title>Escribir reseña</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
     <style>
@@ -25,28 +25,25 @@
 </head>
 <body>
     {% block contenido %}
-    <h1>Escribir Reseña</h1>
-    <form method="post">
+    <h1>Escribir reseña</h1>
+    <form method="POST">
         {% csrf_token %}
         {{ form_reseña.as_p }}
-        <button type="submit">Enviar Reseña</button>
+        <button type="submit">Escribir reseña</button>
     </form>
-    
-    <h2>Reseñas agregadas</h2>
+
+    <h2>Reseñas Agregadas</h2>
     <ul>
         {% for reseña in reseña %}
             <li>
-                <strong>Usuario:</strong> {{ reseña.usuario }} <br>
-                <strong>Hotel:</strong> {{ reseña.hotel }} <br>
-                <strong>Texto:</strong> {{ reseña.texto }} <br>
-                <strong>Puntuación:</strong> {{ reseña.puntuacion }}
+                {{ reseña }}
             </li>
         {% empty %}
             <li>No hay reseñas agregadas aún.</li>
         {% endfor %}
-    </ul>
-
+    </ul>    
     <button type="button" onclick="window.history.back();">Atrás</button>
     {% endblock %}
+    
 </body>
 </html>

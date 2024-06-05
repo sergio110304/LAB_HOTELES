@@ -169,7 +169,7 @@ def escribir_reseña(request):
     reseñas = Reseña.objects.all()
 
     return render(request, 'escribir_reseña.html', {'form_reseña': form_reseña, 'reseñas': reseñas})
-    
+
 def detalleshotel(request, idhotel):
     hotel = get_object_or_404(Hotel_info, pk=idhotel)
     return render(request, 'detalleshotel.html', {'hotel': hotel})
