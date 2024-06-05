@@ -76,7 +76,7 @@ def registrar(request):
                 return render(request, 'registrar.html', {'form_usuario': form_usuario, 'error': 'El nombre de usuario ya existe'})
             else:
                 form_usuario.save()
-                return redirect('index')
+                return redirect('homepage')
     else:
         form_usuario = UsuarioForm()
 
