@@ -6,6 +6,7 @@
 <title>Catalogo</title>
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'catalogo.css' %}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 {% endblock %}
 
 {% block contenido %}
@@ -15,7 +16,7 @@
 <form method="POST">
     {% csrf_token %}
     <label for="pais">País:</label>
-    <select id="pais" name="pais">
+    <select id="pais" name="pais" onchange="fetchCiudades()">
         <option value="">Todos</option>
         {% for pais in paises %}
         <option value="{{ pais.countrycode }}">{{ pais.countryname }}</option>
@@ -75,4 +76,24 @@
         </div>
     </div>
 </section>
+
+<script>
+    function fetchCiudades() {
+        var countrycode = $('#pais').val();
+        $.ajax({
+            url: "{% url 'get_ciudades' %}",
+            data: {
+                'countrycode': countrycode
+            },
+            success: function(data) {
+                var ciudadSelect = $('#ciudad');
+                ciudadSelect.empty();
+                ciudadSelect.append('<option value="">Todas</option>');
+                data.forEach(function(ciudad) {
+                    ciudadSelect.append('<option value="' + ciudad.citycode + '">' + ciudad.cityname + '</option>');
+                });
+            }
+        });
+    }
+    </script>
 {% endblock %}
