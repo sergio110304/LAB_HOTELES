@@ -54,12 +54,23 @@ body {
     float: left;
 
 }
+
+
 .menu .navbar ul li a {
     font-size: 18px;
     padding: 20px;
     color: #f1faee;
     display: block;
     font-weight: 600;
+}
+
+.menu .navbar ul li form button {
+    border: 0;
+    background-color: #14110f;
+    border-radius: 8px;
+    color: #f1faee;
+    font-size: 18px;
+    
 }
 
 .menu .navbar ul li a:hover {

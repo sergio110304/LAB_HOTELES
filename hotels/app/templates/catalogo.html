@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base1.html" %}
 
 {% block head %}
 <meta charset="UTF-8">
@@ -9,14 +9,22 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 {% endblock %}
 
+{% block boton %}<button class="boton" type="button" onclick="window.history.back();"><span>Atrás</span></button>{% endblock %}
+
+
 {% block contenido %}
-<button type="button" onclick="window.history.back();">Atrás</button>
-<h1>Catálogo de hoteles</h1>
-<h2>Filtrar hoteles</h2>
-<form method="POST">
+
+
+
+<div class="contenido-texto">
+    <h1>Catálogo de hoteles</h1>
+    <h2>Filtrar hoteles</h2>
+</div>
+
+<form class="form-container" method="POST">
     {% csrf_token %}
     <label for="pais">País:</label>
-    <select id="pais" name="pais" onchange="fetchCiudades()">
+    <select class="selection" id="pais" name="pais" onchange="fetchCiudades()">
         <option value="">Todos</option>
         {% for pais in paises %}
         <option value="{{ pais.countrycode }}">{{ pais.countryname }}</option>
@@ -24,7 +32,7 @@
     </select>
 
     <label for="ciudad">Ciudad:</label>
-    <select id="ciudad" name="ciudad">
+    <select class="selection" id="ciudad" name="ciudad">
         <option value="">Todas</option>
         {% for ciudad in ciudades %}
         <option value="{{ ciudad.citycode }}">{{ ciudad.cityname }}</option>
@@ -32,14 +40,14 @@
     </select>
 
     <label for="rating">Puntuación:</label>
-    <select id="rating" name="rating">
+    <select class="selection" id="rating" name="rating">
         <option value="">Todas</option>
         {% for rating in ratings %}
         <option value="{{ rating }}">{{ rating }}</option>
         {% endfor %}
     </select>
 
-    <button type="submit" value="Buscar">Buscar</button>
+    <button class="boton-subir" type="submit" value="Buscar">Buscar</button>
 </form>
 
 <section class="contenido">

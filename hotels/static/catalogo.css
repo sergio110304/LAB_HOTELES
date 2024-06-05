@@ -1,15 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Open Sans';
 }
 body {
     font-family: "Poppins", sans-serif !important;
-    background: linear-gradient(to top, #556270, #4ECDC4);
+    background: linear-gradient(to top, #fff, #fff);
     width: 100%;
+    
 }
+
+.boton {
+    border: 0;
+    background-color: #14110f;
+    border-radius: 8px;
+    color: #f1faee;
+    font-size: 18px;
+    padding: 4px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.boton span {
+    font-family: "Poppins";
+    font-weight: 600;
+}
+
+.boton:hover {
+    background-color: #f1faee;
+    color: #14110f;
+}
+
+.contenido-texto{
+    background-color: #f1faee;
+    align-items: center;
+    }
+
+.contenido-texto h1{
+    font-weight: 600;    
+}
+
 .contenido{
     max-width: 1200px;
     width: 100%;
@@ -26,11 +58,16 @@ body {
     justify-content: space-between;
     margin-bottom: 40px;
 }
-
+.contenedor p{
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
 .mostrador .fila .item{
     max-width: 210px;
     padding: 30px;
-    height: 275px;
+    height: 300px;
     /*border: 2px solid red;*/
     text-align: center;
     margin: 0 10px;
@@ -38,6 +75,7 @@ body {
     border-radius: 5px;
     transition: .3s;
     text-decoration: none;
+    border-bottom: 1px solid black;
 }
 
 .mostrador .fila .item:hover{
@@ -58,6 +96,28 @@ body {
     font-weight: bold;
     font-size: 20px;
 }
+
+.form-container {
+    margin-left: 10vh;
+    margin-right: 10vh;
+    display: flex;
+    justify-content:space-between;
+    
+
+}
+
+.selection {
+    border: none;
+    border-bottom: 1px solid black;
+    appearance: none;
+    font-size: 18px;
+    font-family: "Poppins";
+    font-weight: 600;
+    padding: 4px;
+    cursor: pointer;
+    transition: .3s;
+}
+
 
 
 

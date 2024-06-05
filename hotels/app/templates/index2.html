@@ -17,12 +17,14 @@
             </label>
             
             <nav class="navbar">
-                <form method="post">
-                    {% csrf_token %}  
-                    <button type="submit" name="ver_cuenta" class="btn btn-danger">Mi Cuenta</button>
-                </form>
                 <ul>
                     <li><a href="{% url 'logout' %}" class="btn btn-danger">Cerrar Sesión</a></li>
+                    <li>
+                        <form method="post">
+                            {% csrf_token %}  
+                            <button class="boton" type="submit" name="ver_cuenta" class="btn btn-danger">Mi Cuenta</button>
+                        </form>
+                    </li>
                 </ul>
             </nav>
         </div>
